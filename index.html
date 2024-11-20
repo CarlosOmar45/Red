@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta Lugar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">REDCUCEI</div>
+        <nav class="nav">
+            <a href="#">INICIO</a>
+            <a href="#">PERFIL</a>
+            <button class="logout-btn">Salir</button>
+        </nav>
+    </header>
+    <main class="main">
+        <div class="form-container">
+            <h1>ALTA LUGAR</h1>
+            <form action="#">
+                <input type="text" placeholder="NOMBRE" required>
+                <input type="number" placeholder="DISTANCIA EN MINUTOS" required>
+                <div class="address">
+                    <input type="text" placeholder="CALLE" required>
+                    <input type="text" placeholder="No EXTERIOR" required>
+                </div>
+                <select required>
+                    <option value="" disabled selected>SELECCIONA EL TIPO DE ESTABLECIMIENTO</option>
+                    <option value="restaurant">Restaurante</option>
+                    <option value="tienda">Tienda</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <textarea placeholder="Descripción" required></textarea>
+                <button type="submit">REGÍSTRATE</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
