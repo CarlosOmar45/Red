@@ -9,6 +9,7 @@ $con = conecta();
 $nombre=$_SESSION['nombre'];
 $apellidos=$_SESSION["apellidos"];
 $user_id=$_SESSION['id'];
+$carrera=$_SESSION['carrera'];
 $lugar_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 ?>
 <!DOCTYPE html>
