@@ -16,16 +16,16 @@ if ($res->num_rows == 0) {
     }
     else{
         $row=$res->fetch_array();
-        $rol =$row["rol"];
+        $rol =$row["carrera"];
         $a=1;
-        $id =$row["id"];
+        $id =$row["user_id"];
         $nombre =$row["nombre"];
         $apellidos =$row["apellidos"];
         $_SESSION['id']=$id;
         $_SESSION['nombre']=$nombre;
         $_SESSION['apellidos']=$apellidos;
         $_SESSION['correo']=$correo;
-        $_SESSION['rol']=$rol_txt;
+        $_SESSION['carrera']=$rol;
 
     }
     echo $a;

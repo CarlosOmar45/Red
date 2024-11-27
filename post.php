@@ -1,9 +1,13 @@
 <?php 
+session_start();
 require "/home/conectared.php";
 $con = conecta();
-#if(empty($_SESSION['id'])){
-#    header('Location: ./login.php');
-#    }
+$nombre=$_SESSION['nombre'],
+$apellidos=$_SESSION["apellidos"];
+$user_id=$_SESSION['id'];
+if(empty($_SESSION['id'])){
+    header('Location: ./login.php');
+}
 $lugar_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 ?>
 <!DOCTYPE html>
@@ -28,7 +32,7 @@ $lugar_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
         <h2>PUBLICACIONES</h2>
         <div class="user-info">
             <div class="avatar"></div>
-            <span>Juan Perez</span>
+            <span><?php echo "$nombre $apellidos <br> $carrera";?></span>
             <button class="add-post" onclick="alta()">Añadir lugar</button>
         </div>
 <?php
