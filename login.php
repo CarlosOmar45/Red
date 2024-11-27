@@ -1,3 +1,15 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require "/home/conectared.php";
+$con = conecta();
+if(empty($_SESSION['id'])){
+    header('Location: ./home.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +59,7 @@ function iniciaSesion(){
                 data:'correo='+correo+'&'+'pass='+pass,
                 success:function(res){
                     if(res==1){
-                        location.href ="./index.php";
+                        location.href ="./home.php";
                     }
                     else{
                         $('#mensaje').html('Correo o contraseña erroneos!!');

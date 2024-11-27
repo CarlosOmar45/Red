@@ -4,7 +4,7 @@ require "/home/conectared.php";
 $con = conecta();
 $correo=$_POST['correo'];
 $password=$_REQUEST['pass'];
-#$pass=md5($password);
+$pass=md5($password);
 $pass=$password;
 
 
