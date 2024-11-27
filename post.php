@@ -1,13 +1,14 @@
 <?php 
 session_start();
-require "/home/conectared.php";
-$con = conecta();
-$nombre=$_SESSION['nombre'],
-$apellidos=$_SESSION["apellidos"];
-$user_id=$_SESSION['id'];
 if(empty($_SESSION['id'])){
     header('Location: ./login.php');
+    exit();
 }
+require "/home/conectared.php";
+$con = conecta();
+$nombre=$_SESSION['nombre'];
+$apellidos=$_SESSION["apellidos"];
+$user_id=$_SESSION['id'];
 $lugar_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 ?>
 <!DOCTYPE html>
@@ -40,7 +41,7 @@ $sql_pedidos = "SELECT * FROM Lugar WHERE lugar_id=$lugar_id";
 $res_lugar = $con->query($sql_pedidos);
 
 // Verificar si el usuario tiene pedidos
-if (mysqli_num_rows($res_lugar) > 0) {
+if ($res_lugar->num_rows > 0) {
     // Recorrer todos los pedidos
     while ($lugar = $res_lugar->fetch_array()) {
         $nombrel = $lugar["nombre"]; // nombre
@@ -113,7 +114,7 @@ if (mysqli_num_rows($res_lugar) > 0) {
     $res_com = $con->query($sql_coment);
 
     // Verificar si la publicación tiene comentarios
-    if (mysqli_num_rows($res_com) > 0) {
+    if ($res_com->num_rows > 0) {
         while ($comentario = $res_com->fetch_array()) {
             $user_id = $comentario["user_id"];
             $txtcom = $comentario["comentario"];
@@ -152,9 +153,9 @@ if (mysqli_num_rows($res_lugar) > 0) {
 } else {
     echo "<p>Esta publicación no está disponible aún.</p>";
 }
+$con->close();
 ?> 
     </main>
     <script src="a.js"></script>
 </body>
 </html>
-
