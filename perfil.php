@@ -84,6 +84,7 @@ $con = conecta();
                 echo "<h3>Lugar ID: $lugar_id</h3>";
                 // Publicación
                 echo "
+                <a href=\"./post.php?id=$lugar_id\">
                 <div class=\"post\">
                     <div class=\"post-header\">
                         <div class=\"avatar\">
@@ -124,7 +125,7 @@ $con = conecta();
                         </div>
                     </div>
                 </div>
-
+                </a>
                 <div class=\"comment-section\">
                     <input type=\"text\" placeholder=\"Escribe un comentario aquí...\">
                     <button class=\"comment-button\">COMENTAR</button>
