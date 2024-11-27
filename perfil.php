@@ -77,8 +77,8 @@ $con = conecta();
                 $lugar_id = $lugar["lugar_id"]; // ID del lugar
                 $nombrel = $lugar["nombre"]; // nombre
                 $descripcion = $lugar["descripcion"]; // Descripción
-                $estrellas =$lugar["estrellas_prom"];
-                $ra=5;
+                $estrellas = $lugar["estrellas_prom"];
+                $ra = 5;
 
                 echo "<h3>Lugar ID: $lugar_id</h3>";
                 // Publicación
@@ -108,7 +108,7 @@ $con = conecta();
                             } 
                             $ra--;
                         }
-                        $sql = "SELECT COUNT(*) AS total_likes FROM Likes WHERE lugar_id = 1 AND item_type = 'lugar' AND like_value =TRUE'";
+                        $sql = "SELECT COUNT(*) AS total_likes FROM Likes WHERE lugar_id = 1 AND item_type = 'lugar' AND like_value = TRUE";
                         $res = $con->query($sql);
                         $row = $res->fetch_array();
                         $likes = $row['total_likes']; 
@@ -135,3 +135,4 @@ $con = conecta();
     </main>
 </body>
 </html>
+
