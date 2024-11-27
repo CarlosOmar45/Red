@@ -7,7 +7,6 @@
 	var correo = $("#correo");
 	var pass = $("#pass"); 
 
-
 	correo.blur(validateCorreo);
 	pass.blur(validatePass);
 	function validateCorreo(){
@@ -42,7 +41,7 @@ function iniciaSesion(){
     var pass = $('#pass').val();
         if(validateCorreo()& validatePass()){
             $.ajax({
-                url:'../Front/valida.php?',
+                url:'./valida.php?',
                 type:'post',
                 dataType:'text',
                 data:'correo='+correo+'&'+'pass='+pass,
@@ -210,14 +209,12 @@ function iniciaSesion(){
 </head>
 <body>
     <header class="header">
-      <header>
         <a href="./home.php"><div class="logo">REDCUCEI</div></a>
         <nav>
             <a href="./home.php">INICIO</a>
             <a href="./perfil.php">PERFIL</a>
             <button class="logout-btn" onclick="logout()">Salir</button>
         </nav>
-    </header>
     </header>
     <form class="forma02" name="forma02" id="forma02" method="post">
         <p id="heading">Login</p>
