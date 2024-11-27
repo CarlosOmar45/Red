@@ -5,7 +5,6 @@ $con = conecta();
 $correo=$_POST['correo'];
 $password=$_REQUEST['pass'];
 $pass=md5($password);
-$pass=$password;
 
 
 // Consulta para verificar el usuario
