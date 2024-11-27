@@ -125,15 +125,15 @@ if (mysqli_num_rows($res_lugar) > 0) {
             $coment_likes = $row_likes['total_likes'];
             echo "
             <div class=\"comment\">
-                <div class=\"comment-header\">
-                    <div class=\"avatar\">
-                        <img class=\"foto\" src=\"./foto.png\" alt=\"fotoperfil\">
-                    </div>
-                    <div>
-                        <strong>$nombre $apellidos</strong>
-                        <p>$carrera</p>
-                    </div>
+                <div class=\"post-header\">
+                <div class=\"avatar\">
+                <img class=\"foto\" src=\"./foto.png\" alt=\"fotoperfil\">
                 </div>
+                <div>
+                    <strong>$nombre $apellidos</strong>
+                    <p>$carrera</p>
+                </div>
+            </div>
                 <p>$txtcom</p>
                 <div class=\"comment-footer\">
                     <span class=\"likes\">$coment_likes</span>
