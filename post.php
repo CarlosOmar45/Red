@@ -39,7 +39,6 @@ $res_lugar = $con->query($sql_pedidos);
 if (mysqli_num_rows($res_lugar) > 0) {
     // Recorrer todos los pedidos
     while ($lugar = $res_lugar->fetch_array()) {
-        $lugar_id = $lugar["lugar_id"]; // ID del lugar
         $nombrel = $lugar["nombre"]; // nombre
         $descripcion = $lugar["descripcion"]; // Descripción
         $estrellas = $lugar["estrellas_prom"];
@@ -106,7 +105,7 @@ if (mysqli_num_rows($res_lugar) > 0) {
         </div>
         ";
     }
-    $sql_coment = "SELECT * FROM Comentario WHERE lugar_id=1";
+    $sql_coment = "SELECT * FROM Comentario WHERE lugar_id=$lugar_id";
     $res_com = $con->query($sql_coment);
 
     // Verificar si la publicación tiene comentarios
