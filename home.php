@@ -29,7 +29,7 @@ $con = conecta();
     <main class="container">
         <h2>PUBLICACIONES</h2>
         <div class="user-info">
-            <div class="avatar"></div>
+            <div class="avatar"><img src="./foto.png" alt=""></div>
             <span>Juan Perez</span>
             <button class="add-post">Añadir lugar</button>
         </div>
