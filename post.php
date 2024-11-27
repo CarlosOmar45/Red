@@ -43,6 +43,13 @@ if (mysqli_num_rows($res_lugar) > 0) {
         $descripcion = $lugar["descripcion"]; // Descripción
         $estrellas = $lugar["estrellas_prom"];
         $dist = $lugar["distancia"];
+        $user_id=$lugar["user_id"];
+        $sql = "SELECT * FROM Usuario WHERE user_id=$user_id";
+           $res = $con->query($sql);
+           $row = $res->fetch_array();
+           $nombre = $row["nombre"];
+           $apellidos = $row["apellidos"];
+           $carrera = $row["carrera"];
         $ra = 5;
 
         echo "<h3>ID Publicación: $lugar_id</h3>";
