@@ -61,7 +61,9 @@ if (mysqli_num_rows($res_lugar) > 0) {
         echo "
         <div class=\"post\">
             <div class=\"post-header\">
-                <div class=\"avatar\"></div>
+                <div class=\"avatar\">
+                <img class="foto" src="./foto.png" alt="fotoperfil">
+                </div>
                 <div>
                     <strong>$nombre $apellidos</strong>
                     <p>$carrera</p>
