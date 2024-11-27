@@ -240,7 +240,7 @@ function iniciaSesion(){
         </div>
         <div class="btn1">
         <a class="button1" href="javascript:void(0);"  onclick="iniciaSesion();" type="submit">Login</pre></a>
-        <a class="button2" href="./registro.html"  type="submit">Sing Up</pre></a>
+        <a class="button2" href="./AltaUsuario.php"  type="submit">Sing Up</pre></a>
         </div>
         <button class="button3">Forgot Password</button>
     </form>
