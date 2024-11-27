@@ -38,9 +38,6 @@ $con = conecta();
            $carrera = $row["carrera"];
            $codigo = $row["codigo"];
            $nacimiento = $row["fecha_nacimiento"];
-           $fecha_formateada = $nacimiento->format('j \d\e F \d\e Y'); // Traducir el nombre del mes al español 
-           $meses = array( 'January' => 'Enero', 'February' => 'Febrero', 'March' => 'Marzo', 'April' => 'Abril', 'May' => 'Mayo', 'June' => 'Junio', 'July' => 'Julio', 'August' => 'Agosto', 'September' => 'Septiembre', 'October' => 'Octubre', 'November' => 'Noviembre', 'December' => 'Diciembre' ); 
-           $fecha_formateada = str_replace(array_keys($meses), array_values($meses), $fecha_formateada); 
         ?>
         <!-- Sección de Información del Usuario -->
         <section class="profile-info">
@@ -51,7 +48,7 @@ $con = conecta();
                 <div class="user-details">
                     <p><strong>NOMBRE</strong>: <?php echo $nombre . " " . $apellidos; ?></p>
                     <p><strong>CARRERA</strong>: <?php echo $carrera; ?></p>
-                    <p><strong>FECHA DE NACIMIENTO</strong>: <?php echo $nacimiento." o "$fecha_formateada; ?></p>
+                    <p><strong>FECHA DE NACIMIENTO</strong>: <?php echo $nacimiento; ?></p>
                     <?php  
                     $sql = "SELECT count(*) AS coment FROM Comentario WHERE user_id='1'";
                     $res = $con->query($sql);
@@ -84,7 +81,7 @@ $con = conecta();
                 $estrellas = $lugar["estrellas_prom"];
                 $ra = 5;
 
-                echo "<h3>ID Pubicacion: $lugar_id</h3>";
+                echo "<h3>Lugar ID: $lugar_id</h3>";
                 // Publicación
                 echo "
                 <div class=\"post\">
