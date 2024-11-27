@@ -4,6 +4,7 @@ $con = conecta();
 #if(empty($_SESSION['id'])){
 #    header('Location: ./login.php');
 #    }
+$lugar_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,7 +32,7 @@ $con = conecta();
             <button class="add-post">Añadir lugar</button>
         </div>
 <?php
-$sql_pedidos = "SELECT * FROM Lugar WHERE lugar_id=1";
+$sql_pedidos = "SELECT * FROM Lugar WHERE lugar_id=$lugar_id";
 $res_lugar = $con->query($sql_pedidos);
 
 // Verificar si el usuario tiene pedidos
