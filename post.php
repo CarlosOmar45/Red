@@ -29,7 +29,7 @@ $lugar_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
         <div class="user-info">
             <div class="avatar"></div>
             <span>Juan Perez</span>
-            <button class="add-post">Añadir lugar</button>
+            <button class="add-post" onclick="alta()">Añadir lugar</button>
         </div>
 <?php
 $sql_pedidos = "SELECT * FROM Lugar WHERE lugar_id=$lugar_id";
