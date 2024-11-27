@@ -1,5 +1,6 @@
 <?php 
 require "/home/conectared.php";
+$con = conecta();
 #if(empty($_SESSION['id'])){
 #    header('Location: ./login.php');
 #    }
@@ -48,14 +49,13 @@ if (mysqli_num_rows($res_lugar) > 0) {
             <div class=\"post-header\">
                 <div class=\"avatar\"></div>
                 <div>
-                    <strong>$nombre</strong>
+                    <strong>Raul</strong>
                     <p>Ingeniería Bioquímica</p>
                 </div>
             </div>
             <h2>$nombrel</h2>
             <p>
-                Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look: 
-                Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite...
+                $descripcion
             </p>
             <div class=\"post-image\"></div>
             <div class=\"post-footer\">
