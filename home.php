@@ -23,7 +23,7 @@ $con = conecta();
             <nav>
                 <a href="./home.php">INICIO</a>
                 <a href="./perfil.php">PERFIL</a>
-                <button class="./cerrar.php">Salir</button>
+                <button class="logout-btn" onclick="logout()">Salir</button>
             </nav>
     </header>
     <main class="container">
@@ -113,5 +113,6 @@ if (mysqli_num_rows($res_lugar) > 0) {
 }
 ?> 
     </main>
+    <script src="a.js"></script>
 </body>
 </html>

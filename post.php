@@ -20,7 +20,7 @@ $lugar_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
         <nav>
             <a href="./home.php">INICIO</a>
             <a href="./perfil.php">PERFIL</a>
-            <button class="./cerrar.php">Salir</button>
+            <button class="logout-btn" onclick="logout()">Salir</button>
         </nav>
     </header>
         
@@ -150,6 +150,7 @@ if (mysqli_num_rows($res_lugar) > 0) {
 }
 ?> 
     </main>
+    <script src="a.js"></script>
 </body>
 </html>
 
