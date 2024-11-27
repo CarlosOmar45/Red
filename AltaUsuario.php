@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="header">
-        <div class="logo">REDCUCEI</div>
-        <nav class="nav">
-            <a href="#">INICIO</a>
-            <a href="#">PERFIL</a>
-            <button class="logout-btn">Salir</button>
-        </nav>
+<header class="header">
+            <a href="./home.php"><div class="logo">REDCUCEI</div></a>
+            <nav>
+                <a href="./home.php">INICIO</a>
+                <a href="./perfil.php">PERFIL</a>
+                <button class="logout-btn" onclick="logout()">Salir</button>
+            </nav>
     </header>
     <main class="main">
         <div class="form-container">
