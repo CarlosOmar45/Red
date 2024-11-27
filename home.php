@@ -19,9 +19,9 @@ $con = conecta();
 </head>
 <body>
     <header class="header">
-            <a href="./post.php"><div class="logo">REDCUCEI</div></a>
+            <a href="./home.php"><div class="logo">REDCUCEI</div></a>
             <nav>
-                <a href="./post.php">INICIO</a>
+                <a href="./home.php">INICIO</a>
                 <a href="./perfil.php">PERFIL</a>
                 <button class="./cerrar.php">Salir</button>
             </nav>
@@ -32,7 +32,7 @@ $con = conecta();
             <div class="avatar">
                 <img class="foto" src="./foto.png" alt="fotoperfil">
             </div>
-            <span>Juan Perez</span>
+            <span>as</span>
             <button class="add-post">Añadir lugar</button>
         </div>
 <?php
