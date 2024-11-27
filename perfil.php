@@ -36,7 +36,7 @@ $con = conecta();
            $nombre = $row["nombre"];
            $apellidos = $row["apellidos"];
            $correo = $row["correo"];
-           $rol = $row["carrera"];
+           $carrera = $row["carrera"];
            $codigo = $row["codigo"];
            $nacimiento = $row["fecha_nacimiento"];
         ?>
@@ -46,10 +46,20 @@ $con = conecta();
                 <div class="avatar"></div>
                 <div class="user-details">
                     <p><strong>NOMBRE</strong>: <?php echo $nombre . " " . $apellidos; ?></p>
-                    <p><strong>CARRERA</strong>: Ingeniería Bioquímica</p>
+                    <p><strong>CARRERA</strong>: <?php echo $carrera; ?></p>
                     <p><strong>FECHA DE NACIMIENTO</strong>: <?php echo $nacimiento; ?></p>
-                    <p><strong>NÚMERO DE PUBLICACIONES</strong>: 10</p>
-                    <p><strong>NÚMERO DE COMENTARIOS</strong>: 34</p>
+                    <?php  
+                    $sql = "SELECT count(*) AS coment FROM Comentario WHERE user_id='1'";
+                    $res = $con->query($sql);
+                    $row = $res->fetch_array();
+                    $comentarios = $row['coment']; 
+                    $sql = "SELECT count(*) AS post FROM Lugar WHERE user_id='1'";
+                    $res = $con->query($sql);
+                    $row = $res->fetch_array();
+                    $post = $row['post']; 
+                    ?>
+                    <p><strong>NÚMERO DE PUBLICACIONES</strong>: <?php echo $post; ?></p>
+                    <p><strong>NÚMERO DE COMENTARIOS</strong>: <?php echo $comentarios; ?></p>
                 </div>
             </div>
         </section>
@@ -67,6 +77,8 @@ $con = conecta();
                 $lugar_id = $lugar["lugar_id"]; // ID del lugar
                 $nombrel = $lugar["nombre"]; // nombre
                 $descripcion = $lugar["descripcion"]; // Descripción
+                $estrellas =$lugar["estrellas_prom"];
+                $ra=5;
 
                 echo "<h3>Lugar ID: $lugar_id</h3>";
                 // Publicación
@@ -75,22 +87,36 @@ $con = conecta();
                     <div class=\"post-header\">
                         <div class=\"avatar\"></div>
                         <div>
-                            <strong>$nombre</strong>
-                            <p>Ingeniería Bioquímica</p>
+                            <strong>$nombre $apellidos</strong>
+                            <p>$carrera</p>
                         </div>
                     </div>
                     <h2>$nombrel</h2>
                     <p>
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite...
+                        $descripcion
                     </p>
                     <div class=\"post-image\"></div>
                     <div class=\"post-footer\">
-                        <div class=\"rating\">
-                            ★★★★☆
+                        <div class=\"rating\">";
+                        $testre = ''; // Inicializar la variable 
+                        while ($ra > 0) { // Cambiar la condición para evitar un bucle infinito 
+                            if ($estrellas > 0) { // Cambiar la condición para evitar agregar más estrellas de las necesarias 
+                                $testre .= '★'; 
+                                $estrellas--; 
+                            } else { 
+                                $testre .= '☆';
+                            } 
+                            $ra--;
+                        }
+                        $sql = "SELECT COUNT(*) AS total_likes FROM Likes WHERE lugar_id = 1 AND item_type = 'lugar' AND like_value =TRUE'";
+                        $res = $con->query($sql);
+                        $row = $res->fetch_array();
+                        $likes = $row['total_likes']; 
+                        echo"
+                        $testre
                         </div>
                         <div>
-                            <span class=\"likes\">180</span>
+                            <span class=\"likes\">$likes</span>
                             <button class=\"like-button\">👍</button>
                         </div>
                     </div>
