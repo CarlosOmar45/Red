@@ -84,8 +84,9 @@ $con = conecta();
                 echo "<h3>Lugar ID: $lugar_id</h3>";
                 // Publicación
                 echo "
-                <a href=\"./post.php?id=$lugar_id\">
+                
                 <div class=\"post\">
+                <a href=\"./post.php?id=$lugar_id\">
                     <div class=\"post-header\">
                         <div class=\"avatar\">
                         <img class=\"foto\" src=\"./foto.png\" alt=\"fotoperfil\">
@@ -100,6 +101,7 @@ $con = conecta();
                         $descripcion
                     </p>
                     <div class=\"post-image\"></div>
+                    </a>
                     <div class=\"post-footer\">
                         <div class=\"rating\">";
                         $testre = ''; // Inicializar la variable 
@@ -125,7 +127,7 @@ $con = conecta();
                         </div>
                     </div>
                 </div>
-                </a>
+                
                 <div class=\"comment-section\">
                     <input type=\"text\" placeholder=\"Escribe un comentario aquí...\">
                     <button class=\"comment-button\">COMENTAR</button>

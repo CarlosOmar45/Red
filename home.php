@@ -59,8 +59,8 @@ if (mysqli_num_rows($res_lugar) > 0) {
         echo "<h3>Lugar ID: $lugar_id</h3>";
         // Publicación
         echo "
-        <a href=\"./post.php?id=$lugar_id\">
         <div class=\"post\">
+        <a href=\"./post.php?id=$lugar_id\">
             <div class=\"post-header\">
                 <div class=\"avatar\">
                 <img class=\"foto\" src=\"./foto.png\" alt=\"fotoperfil\">
@@ -75,6 +75,7 @@ if (mysqli_num_rows($res_lugar) > 0) {
                 $descripcion
             </p>
             <div class=\"post-image\"></div>
+            </a>
             <div class=\"post-footer\">
                 <div class=\"rating\">";
                 $testre = ''; // Inicializar la variable 
@@ -100,7 +101,7 @@ if (mysqli_num_rows($res_lugar) > 0) {
                 </div>
             </div>
         </div>
-        </a>
+        
 
         <div class=\"comment-section\">
             <input type=\"text\" placeholder=\"Escribe un comentario aquí...\">
