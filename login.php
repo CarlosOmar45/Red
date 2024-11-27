@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 require "/home/conectared.php";
 $con = conecta();
-if(empty($_SESSION['id'])){
+if(!empty($_SESSION['id'])){
     header('Location: ./home.php');
 }
 ?>
