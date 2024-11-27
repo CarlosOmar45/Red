@@ -18,12 +18,12 @@ $con = conecta();
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo">REDCUCEI</div>
+    <header class="header">
+        <a href="./post.php"><div class="logo">REDCUCEI</div></a>
         <nav>
-            <a href="/home">INICIO</a>
-            <a href="/profile">PERFIL</a>
-            <button class="logout">Salir</button>
+            <a href="./home.php">INICIO</a>
+            <a href="./perfil.php">PERFIL</a>
+            <button class="./cerrar.php">Salir</button>
         </nav>
     </header>
     <main class="container">
@@ -32,7 +32,6 @@ $con = conecta();
            $sql = "SELECT * FROM Usuario WHERE user_id='1'";
            $res = $con->query($sql);
            $row = $res->fetch_array();
-           $id = $row["user_id"];
            $nombre = $row["nombre"];
            $apellidos = $row["apellidos"];
            $correo = $row["correo"];
