@@ -177,7 +177,7 @@ if ($res_lugar->num_rows > 0) {
             echo "
             <div class=\"comment\">
                 <div class=\"post-header\">
-                <div class=\"avatar">
+                <div class=\"avatar\">
                 <img class=\"foto\" src=\"./foto.png\" alt=\"fotoperfil\">
             </div>
                 <div>
