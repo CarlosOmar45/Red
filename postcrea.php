@@ -4,7 +4,7 @@ require "/home/conectared.php";
 $con = conecta();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener el user_id de la sesión
-    $user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['id'];
 
     // Obtener los datos del formulario
     $nombre = $_POST['name'];
