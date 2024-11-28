@@ -55,11 +55,7 @@ function LikeComentario(id){
         data:'tipo='+tipo+'&'+'id='+id,
         success:function(res){
             
-<<<<<<< HEAD
                 $('#com'+id).html('Este email esta en uso');
-=======
-                $('#'+id).html(res);
->>>>>>> 004bb12b01be2f7c4e55ec0fca8163c5d39b7c61
             
 
     },error:function(){
