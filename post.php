@@ -141,7 +141,7 @@ if ($res_lugar->num_rows > 0) {
                 $testre
                 </div>
                 <div>
-                    <span class=\"likes\" id=\"likes-$lugar_id\">$likes</span>
+                    <span class=\"likes\" id=\"$lugar_id\">$likes</span>
                     <a class=\"like-button\" href=\"javascript:void(0);\" onclick=\"LikeLugar($lugar_id);\" type=\"submit\">&nbsp;👍&nbsp;</a>
                 </div>
             </div>
@@ -187,7 +187,7 @@ if ($res_lugar->num_rows > 0) {
             </div>
                 <p>$txtcom</p>
                 <div class=\"comment-footer\">
-                   <span class=\"likes\" id=\"likes-com$comentario_id\">$coment_likes 👍</span>
+                   <span class=\"likes\" id=\"com$comentario_id\">$coment_likes</span>
                     <a class=\"like-button\" href=\"javascript:void(0);\" onclick=\"LikeComentario($comentario_id, $lugar_id);\" type=\"submit\">&nbsp;👍&nbsp;</a>
                 </div>
             </div>
