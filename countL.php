@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 require "/home/conectared.php";
 $con = conecta();
@@ -46,24 +46,24 @@ if ($tipo == 1) {
     $row = $res->fetch_assoc();
     $response['total_likes'] = $row['total_likes'];
 } else { 
-    //comentario 
-    $sql = $con->prepare("SELECT like_value, like_id FROM Likes WHERE user_id = ? AND item_type = ? AND comentario_id = ? AND lugar_id=?");
-    $sql->bind_param("iii", $user_id, $tipo, $id,$lugar_id);
+    // Comentario
+    $sql = $con->prepare("SELECT like_value, like_id FROM Likes WHERE user_id = ? AND item_type = ? AND comentario_id = ? AND lugar_id = ?");
+    $sql->bind_param("iiii", $user_id, $tipo, $id, $lugar_id);
     $sql->execute();
     $res = $sql->get_result();
 
     if ($res->num_rows === 0) {
-        // Insertar nuevo like
+        // Insertar nuevo like para comentario
         $like_value = 1;
-        $sql = $con->prepare("INSERT INTO Likes (user_id, comentario_id, item_type, like_value,lugar_id) VALUES (?, ?, ?, ?,?)");
-        $sql->bind_param("iiii", $user_id, $id, $tipo, $like_value,$lugar_id);
+        $sql = $con->prepare("INSERT INTO Likes (user_id, comentario_id, item_type, like_value, lugar_id) VALUES (?, ?, ?, ?, ?)");
+        $sql->bind_param("iiiii", $user_id, $id, $tipo, $like_value, $lugar_id);
         if ($sql->execute()) {
             $response['success'] = true;
         } else {
             $response['success'] = false;
         }
     } else {
-        // Alternar valor de like
+        // Alternar valor de like para comentario
         $row = $res->fetch_assoc();
         $like_value = $row["like_value"] ? 0 : 1;
         $like_id = $row["like_id"];
@@ -76,7 +76,7 @@ if ($tipo == 1) {
         }
     }
 
-    // Obtener el total de likes
+    // Obtener el total de likes para el comentario
     $sql = $con->prepare("SELECT COUNT(*) AS total_likes FROM Likes WHERE comentario_id = ? AND item_type = ? AND like_value = TRUE");
     $sql->bind_param("ii", $id, $tipo);
     $sql->execute();
@@ -84,6 +84,7 @@ if ($tipo == 1) {
     $row = $res->fetch_assoc();
     $response['total_likes'] = $row['total_likes'];
 }
+
 $con->autocommit(TRUE);
 echo json_encode($response);
 $con->close();
