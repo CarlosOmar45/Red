@@ -145,7 +145,7 @@ if ($res_lugar->num_rows > 0) {
             </div>
                 <p>$txtcom</p>
                 <div class=\"comment-footer\">
-                   <span class=\"likes\" id =\"$comentario_id\">$likes</span>
+                   <span class=\"likes\" id = \"com$comentario_id\">$likes</span>
                     <a class=\"like-button\" href=\"javascript:void(0);\"  onclick=\"LikeComentario($comentario_id);\" type=\"submit\">&nbsp;👍&nbsp;</pre></a>
                 </div>
             </div>
