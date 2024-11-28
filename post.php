@@ -119,13 +119,14 @@ if ($res_lugar->num_rows > 0) {
         while ($comentario = $res_com->fetch_array()) {
             $user_id = $comentario["user_id"];
             $txtcom = $comentario["comentario"];
+            $comentario_id = $comentario["comentario_id"];
             $sql_uc = "SELECT * FROM Usuario WHERE user_id=$user_id";
             $res_uc = $con->query($sql_uc);
             $row = $res_uc->fetch_array();
             $nombre = $row["nombre"];
             $apellidos = $row["apellidos"];
             $carrera = $row["carrera"];
-            $sql_likes = "SELECT COUNT(*) AS total_likes FROM Likes WHERE comentario_id = " . $comentario["comentario_id"] . " AND item_type = 'comentario' AND like_value = TRUE";
+            $sql_likes = "SELECT COUNT(*) AS total_likes FROM Likes WHERE comentario_id =$comentario_id AND item_type = 'comentario' AND like_value = TRUE";
             $res_likes = $con->query($sql_likes);
             $row_likes = $res_likes->fetch_array();
             $coment_likes = $row_likes['total_likes'];
@@ -142,8 +143,8 @@ if ($res_lugar->num_rows > 0) {
             </div>
                 <p>$txtcom</p>
                 <div class=\"comment-footer\">
-                   <span class=\"likes\" id =\"$comentario["comentario_id"]\">$likes</span>
-                    <a class=\"like-button\" href=\"javascript:void(0);\"  onclick=\"LikeComentario($comentario["comentario_id"]);\" type=\"submit\">&nbsp;👍&nbsp;</pre></a>
+                   <span class=\"likes\" id =\"$comentario_id\">$likes</span>
+                    <a class=\"like-button\" href=\"javascript:void(0);\"  onclick=\"LikeComentario($comentario_id);\" type=\"submit\">&nbsp;👍&nbsp;</pre></a>
                 </div>
             </div>
             ";
