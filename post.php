@@ -128,10 +128,11 @@ if ($res_lugar->num_rows > 0) {
             $nombre = $row["nombre"];
             $apellidos = $row["apellidos"];
             $carrera = $row["carrera"];
-            $sql_likes = "SELECT COUNT(*) AS total_likes FROM Likes WHERE comentario_id =$comentario_id AND item_type = 'comentario' AND like_value = 1";
-            $res_likes = $con->query($sql_likes);
-            $row_likes = $res_likes->fetch_array();
-            $coment_likes = $row_likes['total_likes'];
+            $sql = $con->prepare("SELECT COUNT(*) AS total_likes FROM Likes WHERE user_id = ? AND lugar_id = ? AND comentario_id = ? AND item_type = 1 AND like_value =1"); 
+            $sql->bind_param("iiiii", $user_id, $lugar_id, $comentario_id); 
+            $sql->execute(); $res = $sql->get_result(); 
+            $row = $res->fetch_assoc();
+            $coment_likes = $row['total_likes'];
             echo "
             <div class=\"comment\">
                 <div class=\"post-header\">
