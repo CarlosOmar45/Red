@@ -8,5 +8,8 @@ require "/home/conectared.php";
 $con = conecta();
 if(empty($_SESSION['id'])){
     header('Location: ./login.php');
+}else{
+    session_destroy();
+    header('Location: ./home.php');
 }
 ?>
