@@ -75,10 +75,12 @@ $lugar_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
     <main class="container">
         <h2>PUBLICACIONES</h2>
         <div class="user-info">
-            <div class="avatar"></div>
-            <span><?php echo "$nombre $apellidos <br> $carrera";?></span>
-            <button class="add-post" onclick="alta()">Añadir lugar</button>
-        </div>
+            <div class="avatar">
+                <img class="foto" src="./foto.png" alt="fotoperfil">
+                    </div>
+                <strong><?php echo "$nombre $apellidos <br> $carrera";?></strong>
+                <button class="add-post" onclick="alta()">Añadir lugar</button>
+            </div>
 <?php
 $sql_pedidos = "SELECT * FROM Lugar WHERE lugar_id=$lugar_id";
 $res_lugar = $con->query($sql_pedidos);
@@ -175,15 +177,15 @@ if ($res_lugar->num_rows > 0) {
             $row_likes = $res_likes->fetch_assoc();
             $coment_likes = $row_likes['total_likes'];
             echo "
-            <div class=\"user-info\">
-            <div class=\"avatar\">
+            <div class=\"comment\">
+                <div class=\"post-header\">
+                <div class=\"avatar\">
                 <img class=\"foto\" src=\"./foto.png\" alt=\"fotoperfil\">
-                    </div>
-                <strong>$nombre $apellidos</strong>
+                </div>
+                <div>
+                    <strong>$nombre $apellidos</strong>
                     <p>$carrera</p>
-                <button class=\"add-post\" onclick=\"alta()\">Añadir lugar</button>
-            </div>
-                  
+                </div>
             </div>
                 <p>$txtcom</p>
                 <div class=\"comment-footer\">
