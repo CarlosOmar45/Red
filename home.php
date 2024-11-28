@@ -103,7 +103,7 @@ if (mysqli_num_rows($res_lugar) > 0) {
                 </div>
                 <div>
                     <span class=\"likes\" id =\"$lugar_id\">$likes</span>
-                    <button class=\"like-button\">👍</button>
+                                <a class=\"like-button\" href=\"javascript:void(0);\"  onclick=\"LikeLugar($lugar_id);\" type=\"submit\">&nbsp;👍&nbsp;</pre></a>
                 </div>
             </div>
         </div>
