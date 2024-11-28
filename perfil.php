@@ -5,9 +5,11 @@ error_reporting(E_ALL);
 
 require "/home/conectared.php";
 $con = conecta();
-#if(empty($_SESSION['id'])){
-#    header('Location: ./login.php');
-#    }
+if(empty($_SESSION['id'])){
+    header('Location: ./login.php');
+    }
+$user_id=$_SESSION['id'];
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,7 +31,7 @@ $con = conecta();
     <main class="container">
         <?php
            #$id =$_SESSION['idu'];
-           $sql = "SELECT * FROM Usuario WHERE user_id='1'";
+           $sql = "SELECT * FROM Usuario WHERE user_id=$user_id";
            $res = $con->query($sql);
            $row = $res->fetch_array();
            $nombre = $row["nombre"];
@@ -50,11 +52,11 @@ $con = conecta();
                     <p><strong>CARRERA</strong>: <?php echo $carrera; ?></p>
                     <p><strong>FECHA DE NACIMIENTO</strong>: <?php echo $nacimiento; ?></p>
                     <?php  
-                    $sql = "SELECT count(*) AS coment FROM Comentario WHERE user_id='1'";
+                    $sql = "SELECT count(*) AS coment FROM Comentario WHERE user_id=$user_id";
                     $res = $con->query($sql);
                     $row = $res->fetch_array();
                     $comentarios = $row['coment']; 
-                    $sql = "SELECT count(*) AS post FROM Lugar WHERE user_id='1'";
+                    $sql = "SELECT count(*) AS post FROM Lugar WHERE user_id=$user_id";
                     $res = $con->query($sql);
                     $row = $res->fetch_array();
                     $post = $row['post']; 
@@ -68,7 +70,7 @@ $con = conecta();
         <!-- Título Publicaciones -->
         <h2>PUBLICACIONES</h2>
         <?php
-        $sql_pedidos = "SELECT * FROM Lugar WHERE user_id='1'";
+        $sql_pedidos = "SELECT * FROM Lugar WHERE user_id=$user_id";
         $res_lugar = $con->query($sql_pedidos);
 
         // Verificar si el usuario tiene pedidos
