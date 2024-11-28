@@ -16,10 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // Insertar los datos en la tabla Lugar
-    $sql = "INSERT INTO Lugar (user_id, nombre, calle, no_exterior, tipo_establecimiento, descripcion, estrellas_prom) VALUES (?, ?, ?, ?, ?, ?, 0)";
+    $sql = "INSERT INTO Lugar (user_id, nombre, calle, no_exterior, tipo_establecimiento, descripcion, estrellas_prom,distancia) VALUES (?, ?, ?, ?, ?, ?, 0,?)";
 
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("ississ", $user_id, $nombre, $calle, $noext, $tipoEstablecimiento, $descripcion);
+    $stmt->bind_param("ississ", $user_id, $nombre, $calle, $noext, $tipoEstablecimiento, $descripcion,$distancia);
 
     if ($stmt->execute()) {
         echo "Lugar registrado con éxito.";
