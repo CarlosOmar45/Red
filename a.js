@@ -9,7 +9,7 @@ function agrega(id){
     var cantidad = $('#a'+id).val();
     
             $.ajax({
-                url:'/Front/add.php?',
+                url:'./countL.php',
                 type:'post',
                 dataType:'text',
                 data:'cantidad='+cantidad+'&'+'producto_id='+id,
@@ -31,10 +31,10 @@ function LikeLugar(id){
     var tipo = 1;
     
     $.ajax({
-        url:'/Front/add.php?',
+        url:'./countL.php',
         type:'post',
         dataType:'text',
-        data:'tipo='+tipo+'&'+'lugar_id='+id,
+        data:'tipo='+tipo+'&'+'id='+id,
         success:function(res){
             
                 $('#'+id).html('Este email esta en uso');
@@ -49,10 +49,10 @@ function LikeComentario(id){
     var tipo = 2;
     
     $.ajax({
-        url:'/Front/add.php?',
+        url:'./countL.php',
         type:'post',
         dataType:'text',
-        data:'tipo='+tipo+'&'+'comentario_id='+id,
+        data:'tipo='+tipo+'&'+'id='+id,
         success:function(res){
             
                 $('#'+id).html('Este email esta en uso');
