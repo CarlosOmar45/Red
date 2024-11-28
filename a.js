@@ -9,7 +9,7 @@ function agrega(id){
     var cantidad = $('#a'+id).val();
     
             $.ajax({
-                url:'/Front/add.php?',
+                url:'./countL.php',
                 type:'post',
                 dataType:'text',
                 data:'cantidad='+cantidad+'&'+'producto_id='+id,
@@ -31,13 +31,13 @@ function LikeLugar(id){
     var tipo = 1;
     
     $.ajax({
-        url:'/Front/add.php?',
+        url:'./countL.php',
         type:'post',
         dataType:'text',
-        data:'tipo='+tipo+'&'+'lugar_id='+id,
+        data:'tipo='+tipo+'&'+'id='+id,
         success:function(res){
             
-                $('#'+id).html('Este email esta en uso');
+                $('#'+id).html(res);
             
 
     },error:function(){
@@ -49,16 +49,37 @@ function LikeComentario(id){
     var tipo = 2;
     
     $.ajax({
-        url:'/Front/add.php?',
+        url:'./countL.php',
         type:'post',
         dataType:'text',
-        data:'tipo='+tipo+'&'+'comentario_id='+id,
+        data:'tipo='+tipo+'&'+'id='+id,
         success:function(res){
             
+<<<<<<< HEAD
                 $('#com'+id).html('Este email esta en uso');
+=======
+                $('#'+id).html(res);
+>>>>>>> 004bb12b01be2f7c4e55ec0fca8163c5d39b7c61
             
 
     },error:function(){
         alert('Error archivo no encontrado');
     }})
 }
+//function LikeComentario(id) { 
+//    var tipo = 2; 
+//    $.ajax({ url: './countL.php',
+//        type: 'post',
+//        dataType: 'json', 
+//        data: { tipo: tipo, id: id },
+//        success: function(res) { 
+//            if (res.success) { 
+//                $('#likes-' + id).html(res.total_likes + ' 👍');
+//             } 
+//             else { 
+//                alert('Error al actualizar el like'); 
+//            } }, error: function() { 
+//    alert('Error archivo no encontrado'); 
+//} 
+//}); 
+//}

@@ -19,6 +19,8 @@ $lugar_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+</script>
 </head>
 <body>
     <header class="header">
