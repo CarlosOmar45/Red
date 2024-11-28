@@ -19,7 +19,7 @@ if (is_null($lugar_id) || is_null($id) || is_null($user_id)) {
     exit;
 }
 
-$item_type = "comentario";
+$item_type = 2;
 
 // Verificar si ya existe un like
 $sql = $con->prepare("SELECT like_value, like_id FROM Likes WHERE user_id = ? AND item_type = ? AND comentario_id = ? AND lugar_id = ?");

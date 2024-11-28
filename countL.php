@@ -2,7 +2,7 @@
 session_start();
 require "/home/conectared.php";
 $con = conecta();
-$tipo = $_POST['tipo'];
+$tipo =1;
 $lugar_id = $_POST['lugar_id'];
 $user_id = $_SESSION['id'];
 $response = array('success' => false, 'total_likes' => 0);
