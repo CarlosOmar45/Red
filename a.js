@@ -30,37 +30,24 @@ function agrega(id){
 function LikeLugar(id){
     var tipo = 1;
     
-    $.ajax({
-        url:'./countL.php',
-        type:'post',
-        dataType:'text',
-        data:'tipo='+tipo+'&'+'id='+id,
-        success:function(res){
-            
-                $('#'+id).html(res);
-            
+    $.ajax({ url: './countL.php', type: 'post', dataType: 'json', data: { tipo: tipo, id: id }, success: function(res) { 
+        if (res.success) { $('#'+ id).html(res.total_likes);
+         } else { 
+            alert('Error al actualizar el like');
+         } }, error: function() { alert('Error archivo no encontrado');
 
-    },error:function(){
-        alert('Error archivo no encontrado');
-    }})
+          } });
 }
 
 function LikeComentario(id){
     var tipo = 2;
-    
-    $.ajax({
-        url:'./countL.php',
-        type:'post',
-        dataType:'text',
-        data:'tipo='+tipo+'&'+'id='+id,
-        success:function(res){
-            
-                $('#com'+id).html('Este email esta en uso');
-            
+    $.ajax({ url: './countL.php', type: 'post', dataType: 'json', data: { tipo: tipo, id: id }, success: function(res) { 
+        if (res.success) { $('#com'+ id).html(res.total_likes);
+         } else { 
+            alert('Error al actualizar el like');
+         } }, error: function() { alert('Error archivo no encontrado');
 
-    },error:function(){
-        alert('Error archivo no encontrado');
-    }})
+          } });
 }
 //function LikeComentario(id) { 
 //    var tipo = 2; 
