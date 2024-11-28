@@ -37,7 +37,7 @@ function LikeLugar(id){
         data:'tipo='+tipo+'&'+'id='+id,
         success:function(res){
             
-                $('#'+id).html('Este email esta en uso');
+                $('#'+id).html(res);
             
 
     },error:function(){
@@ -45,37 +45,37 @@ function LikeLugar(id){
     }})
 }
 
-//function LikeComentario(id){
-//    var tipo = 2;
-//    
-//    $.ajax({
-//        url:'./countL.php',
-//        type:'post',
-//        dataType:'text',
-//        data:'tipo='+tipo+'&'+'id='+id,
-//        success:function(res){
-//            
-//                $('#'+id).html('Este email esta en uso');
-//            
-//
-//    },error:function(){
-//        alert('Error archivo no encontrado');
-//    }})
-//}
-function LikeComentario(id) { 
-    var tipo = 2; 
-    $.ajax({ url: './countL.php',
-        type: 'post',
-        dataType: 'json', 
-        data: { tipo: tipo, id: id },
-        success: function(res) { 
-            if (res.success) { 
-                $('#likes-' + id).html(res.total_likes + ' 👍');
-             } 
-             else { 
-                alert('Error al actualizar el like'); 
-            } }, error: function() { 
-    alert('Error archivo no encontrado'); 
-} 
-}); 
+function LikeComentario(id){
+    var tipo = 2;
+    
+    $.ajax({
+        url:'./countL.php',
+        type:'post',
+        dataType:'text',
+        data:'tipo='+tipo+'&'+'id='+id,
+        success:function(res){
+            
+                $('#'+id).html(res);
+            
+
+    },error:function(){
+        alert('Error archivo no encontrado');
+    }})
 }
+//function LikeComentario(id) { 
+//    var tipo = 2; 
+//    $.ajax({ url: './countL.php',
+//        type: 'post',
+//        dataType: 'json', 
+//        data: { tipo: tipo, id: id },
+//        success: function(res) { 
+//            if (res.success) { 
+//                $('#likes-' + id).html(res.total_likes + ' 👍');
+//             } 
+//             else { 
+//                alert('Error al actualizar el like'); 
+//            } }, error: function() { 
+//    alert('Error archivo no encontrado'); 
+//} 
+//}); 
+//}
