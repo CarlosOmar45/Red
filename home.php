@@ -5,9 +5,12 @@ error_reporting(E_ALL);
 
 require "/home/conectared.php";
 $con = conecta();
-#if(empty($_SESSION['id'])){
-#    header('Location: ./login.php');
-#    }
+if(empty($_SESSION['id'])){
+    header('Location: ./login.php');
+    }
+    $nombre=$_SESSION['nombre'];
+    $apellidos=$_SESSION['apellidos'];
+$carrera=$_SESSION['carrera'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,10 +34,10 @@ $con = conecta();
         <div class="user-info">
             <div class="avatar">
                 <img class="foto" src="./foto.png" alt="fotoperfil">
+                    </div>
+                <strong><?php echo "$nombre $apellidos <br> $carrera";?></strong>
+                <button class="add-post" onclick="alta()">Añadir lugar</button>
             </div>
-            <span>as</span>
-            <button class="add-post" onclick="alta()">Añadir lugar</button>
-        </div>
 <?php
 $sql_pedidos = "SELECT * FROM Lugar ";
 $res_lugar = $con->query($sql_pedidos);
