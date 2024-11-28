@@ -128,7 +128,7 @@ if ($res_lugar->num_rows > 0) {
             $nombre = $row["nombre"];
             $apellidos = $row["apellidos"];
             $carrera = $row["carrera"];
-            $sql_likes = "SELECT COUNT(*) AS total_likes FROM Likes WHERE comentario_id =$comentario_id AND item_type = 'comentario' AND like_value = TRUE";
+            $sql_likes = "SELECT COUNT(*) AS total_likes FROM Likes WHERE comentario_id =$comentario_id AND item_type = 'comentario' AND like_value = 1";
             $res_likes = $con->query($sql_likes);
             $row_likes = $res_likes->fetch_array();
             $coment_likes = $row_likes['total_likes'];
