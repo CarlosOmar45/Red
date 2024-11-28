@@ -175,15 +175,15 @@ if ($res_lugar->num_rows > 0) {
             $row_likes = $res_likes->fetch_assoc();
             $coment_likes = $row_likes['total_likes'];
             echo "
-            <div class=\"comment\">
-                <div class=\"post-header\">
-                <div class=\"avatar\">
+            <div class=\"user-info\">
+            <div class=\"avatar\">
                 <img class=\"foto\" src=\"./foto.png\" alt=\"fotoperfil\">
-            </div>
-                <div>
-                    <strong>$nombre $apellidos</strong>
+                    </div>
+                <strong>$nombre $apellidos</strong>
                     <p>$carrera</p>
-                </div>
+                <button class=\"add-post\" onclick=\"alta()\">Añadir lugar</button>
+            </div>
+                  
             </div>
                 <p>$txtcom</p>
                 <div class=\"comment-footer\">
