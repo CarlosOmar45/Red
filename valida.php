@@ -15,17 +15,16 @@ if ($res->num_rows == 0) {
     $a=0;
     }
     else{
-        $row=$res->fetch_array();
-        $rol =$row["carrera"];
         $a=1;
-        $id =$row["user_id"];
-        $nombre =$row["nombre"];
-        $apellidos =$row["apellidos"];
-        $_SESSION['id']=$id;
-        $_SESSION['nombre']=$nombre;
-        $_SESSION['apellidos']=$apellidos;
-        $_SESSION['correo']=$correo;
-        $_SESSION['carrera']=$rol;
+        $row=$res->fetch_array();
+        $rol = $row["carrera"]; 
+        $id = $row["user_id"]; 
+        $nombre = $row["nombre"]; 
+        $apellidos = $row["apellidos"]; 
+        $_SESSION['id'] = $id; 
+        $_SESSION['nombre'] = $nombre; 
+        $_SESSION['apellidos'] = $apellidos; 
+        $_SESSION['carrera'] = $rol;
 
     }
     echo $a;
