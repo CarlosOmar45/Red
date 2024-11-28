@@ -47,16 +47,16 @@ if ($tipo == 1) {
     $response['total_likes'] = $row['total_likes'];
 } else { 
     //comentario 
-    $sql = $con->prepare("SELECT like_value, like_id FROM Likes WHERE user_id = ? AND item_type = ? AND comentario_id = ?");
-    $sql->bind_param("iii", $user_id, $tipo, $id);
+    $sql = $con->prepare("SELECT like_value, like_id FROM Likes WHERE user_id = ? AND item_type = ? AND comentario_id = ? AND lugar_id=?");
+    $sql->bind_param("iii", $user_id, $tipo, $id,$lugar_id);
     $sql->execute();
     $res = $sql->get_result();
 
     if ($res->num_rows === 0) {
         // Insertar nuevo like
         $like_value = 1;
-        $sql = $con->prepare("INSERT INTO Likes (user_id, comentario_id, item_type, like_value) VALUES (?, ?, ?, ?)");
-        $sql->bind_param("iiii", $user_id, $id, $tipo, $like_value);
+        $sql = $con->prepare("INSERT INTO Likes (user_id, comentario_id, item_type, like_value,lugar_id) VALUES (?, ?, ?, ?,?)");
+        $sql->bind_param("iiii", $user_id, $id, $tipo, $like_value,$lugar_id);
         if ($sql->execute()) {
             $response['success'] = true;
         } else {
