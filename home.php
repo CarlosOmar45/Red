@@ -5,9 +5,11 @@ error_reporting(E_ALL);
 
 require "/home/conectared.php";
 $con = conecta();
+session_start();
 if(empty($_SESSION['id'])){
     header('Location: ./login.php');
-    }
+    exit();
+}
     $nombre=$_SESSION['nombre'];
     $apellidos=$_SESSION['apellidos'];
 $carrera=$_SESSION['carrera'];
