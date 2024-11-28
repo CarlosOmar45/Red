@@ -6,10 +6,10 @@ if(empty($_SESSION['id'])){
 }
 require "/home/conectared.php";
 $con = conecta();
-$nombre=$_SESSION['nombre'];
-$apellidos=$_SESSION["apellidos"];
-$user_id=$_SESSION['id'];
-$carrera=$_SESSION['carrera'];
+$nombre = $_SESSION['nombre'];
+$apellidos = $_SESSION["apellidos"];
+$user_id = $_SESSION['id'];
+$carrera = $_SESSION['carrera'];
 $lugar_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 ?>
 <!DOCTYPE html>
@@ -19,8 +19,48 @@ $lugar_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js">
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        function LikeLugar(id) {
+            var tipo = 1;
+            $.ajax({
+                url: './countL.php',
+                type: 'post',
+                dataType: 'json',
+                data: { tipo: tipo, id: id },
+                success: function(res) {
+                    if (res.success) {
+                        $('#likes-' + id).html(res.total_likes + ' 👍');
+                    } else {
+                        alert('Error al actualizar el like');
+                    }
+                },
+                error: function() {
+                    alert('Error archivo no encontrado');
+                }
+            });
+        }
+
+        function LikeComentario(comentario_id, lugar_id) {
+            var tipo = 2;
+            $.ajax({
+                url: './countL.php',
+                type: 'post',
+                dataType: 'json',
+                data: { tipo: tipo, id: comentario_id },
+                success: function(res) {
+                    if (res.success) {
+                        $('#likes-com' + comentario_id).html(res.total_likes + ' 👍');
+                    } else {
+                        alert('Error al actualizar el like');
+                    }
+                },
+                error: function() {
+                    alert('Error archivo no encontrado');
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <header class="header">
@@ -51,13 +91,13 @@ if ($res_lugar->num_rows > 0) {
         $descripcion = $lugar["descripcion"]; // Descripción
         $estrellas = $lugar["estrellas_prom"];
         $dist = $lugar["distancia"];
-        $user_id=$lugar["user_id"];
+        $user_id = $lugar["user_id"];
         $sql = "SELECT * FROM Usuario WHERE user_id=$user_id";
-           $res = $con->query($sql);
-           $row = $res->fetch_array();
-           $nombre = $row["nombre"];
-           $apellidos = $row["apellidos"];
-           $carrera = $row["carrera"];
+        $res = $con->query($sql);
+        $row = $res->fetch_array();
+        $nombre = $row["nombre"];
+        $apellidos = $row["apellidos"];
+        $carrera = $row["carrera"];
         $ra = 5;
 
         echo "<h3>ID Publicación: $lugar_id</h3>";
@@ -101,8 +141,8 @@ if ($res_lugar->num_rows > 0) {
                 $testre
                 </div>
                 <div>
-                    <span class=\"likes\" id =\"$lugar_id\">$likes</span>
-                    <a class=\"like-button\" href=\"javascript:void(0);\"  onclick=\"LikeLugar($lugar_id);\" type=\"submit\">&nbsp;👍&nbsp;</pre></a>
+                    <span class=\"likes\" id=\"likes-$lugar_id\">$likes</span>
+                    <a class=\"like-button\" href=\"javascript:void(0);\" onclick=\"LikeLugar($lugar_id);\" type=\"submit\">&nbsp;👍&nbsp;</a>
                 </div>
             </div>
         </div>
@@ -128,11 +168,12 @@ if ($res_lugar->num_rows > 0) {
             $nombre = $row["nombre"];
             $apellidos = $row["apellidos"];
             $carrera = $row["carrera"];
-            $sql = $con->prepare("SELECT COUNT(*) AS total_likes FROM Likes WHERE user_id = ? AND lugar_id = ? AND comentario_id = ? AND item_type = 1 AND like_value =1"); 
-            $sql->bind_param("iiiii", $user_id, $lugar_id, $comentario_id); 
-            $sql->execute(); $res = $sql->get_result(); 
-            $row = $res->fetch_assoc();
-            $coment_likes = $row['total_likes'];
+            $sql = $con->prepare("SELECT COUNT(*) AS total_likes FROM Likes WHERE comentario_id = ? AND item_type = 2 AND like_value = 1"); 
+            $sql->bind_param("i", $comentario_id); 
+            $sql->execute();  
+            $res_likes = $sql->get_result();
+            $row_likes = $res_likes->fetch_assoc();
+            $coment_likes = $row_likes['total_likes'];
             echo "
             <div class=\"comment\">
                 <div class=\"post-header\">
@@ -146,8 +187,8 @@ if ($res_lugar->num_rows > 0) {
             </div>
                 <p>$txtcom</p>
                 <div class=\"comment-footer\">
-                   <span class=\"likes\" id = \"com$comentario_id\">$likes</span>
-                    <a class=\"like-button\" href=\"javascript:void(0);\"  onclick=\"LikeComentario($comentario_id,$lugar_id);\" type=\"submit\">&nbsp;👍&nbsp;</pre></a>
+                   <span class=\"likes\" id=\"likes-com$comentario_id\">$coment_likes 👍</span>
+                    <a class=\"like-button\" href=\"javascript:void(0);\" onclick=\"LikeComentario($comentario_id, $lugar_id);\" type=\"submit\">&nbsp;👍&nbsp;</a>
                 </div>
             </div>
             ";
