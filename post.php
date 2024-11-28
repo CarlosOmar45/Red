@@ -93,8 +93,8 @@ if (mysqli_num_rows($res_lugar) > 0) {
                 $testre
                 </div>
                 <div>
-                    <span class=\"likes\">$likes</span>
-                    <button class=\"like-button\">👍</button>
+                    <span class=\"likes\" id =\"$lugar_id\">$likes</span>
+                    <a class=\"like-button\" href=\"javascript:void(0);\"  onclick=\"LikeLugar($lugar_id);\" type=\"submit\">&nbsp;👍&nbsp;</pre></a>
                 </div>
             </div>
         </div>
@@ -136,8 +136,8 @@ if (mysqli_num_rows($res_lugar) > 0) {
             </div>
                 <p>$txtcom</p>
                 <div class=\"comment-footer\">
-                    <span class=\"likes\">$coment_likes</span>
-                    <button class=\"like-button\">👍</button>
+                   <span class=\"likes\" id =\"$comentario["comentario_id"]\">$likes</span>
+                    <a class=\"like-button\" href=\"javascript:void(0);\"  onclick=\"LikeComentario($comentario["comentario_id"]);\" type=\"submit\">&nbsp;👍&nbsp;</pre></a>
                 </div>
             </div>
             ";

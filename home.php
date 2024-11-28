@@ -96,7 +96,7 @@ if (mysqli_num_rows($res_lugar) > 0) {
                 $testre
                 </div>
                 <div>
-                    <span class=\"likes\">$likes</span>
+                    <span class=\"likes\" id =\"$lugar_id\">$likes</span>
                     <button class=\"like-button\">👍</button>
                 </div>
             </div>

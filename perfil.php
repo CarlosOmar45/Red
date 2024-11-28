@@ -122,8 +122,8 @@ $con = conecta();
                         $testre
                         </div>
                         <div>
-                            <span class=\"likes\">$likes</span>
-                            <button class=\"like-button\">👍</button>
+                                <span class=\"likes\" id =\"$lugar_id\">$likes</span>
+                                <a class=\"like-button\" href=\"javascript:void(0);\"  onclick=\"LikeLugar($lugar_id);\" type=\"submit\">&nbsp;👍&nbsp;</pre></a>
                         </div>
                     </div>
                 </div>
