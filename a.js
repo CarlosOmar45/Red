@@ -30,7 +30,7 @@ function agrega(id){
 function LikeLugar(id){
     var tipo = 1;
     
-    $.ajax({ url: './countL.php', type: 'post', dataType: 'json', data: { tipo: tipo, id: id }, success: function(res) { 
+    $.ajax({ url: './countL.php', type: 'post', dataType: 'json', data: { tipo: tipo, lugar_id: id }, success: function(res) { 
         if (res.success) { $('#'+ id).html(res.total_likes);
          } else { 
             alert('Error al actualizar el like');
@@ -39,9 +39,9 @@ function LikeLugar(id){
           } });
 }
 
-function LikeComentario(id){
+function LikeComentario(id,lugar_id){
     var tipo = 2;
-    $.ajax({ url: './countL.php', type: 'post', dataType: 'json', data: { tipo: tipo, id: id }, success: function(res) { 
+    $.ajax({ url: './countL.php', type: 'post', dataType: 'json', data: { tipo: tipo, id: id ,lugar_id:lugar_id}, success: function(res) { 
         if (res.success) { $('#com'+ id).html(res.total_likes);
          } else { 
             alert('Error al actualizar el like');
