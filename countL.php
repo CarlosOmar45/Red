@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "conecta.php";
+require "/home/conectared.php";
 $con = conecta();
 $tipo = $_POST['tipo'];
 $id = $_POST['id'];

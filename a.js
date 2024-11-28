@@ -75,4 +75,7 @@ function LikeComentario(id) {
              else { 
                 alert('Error al actualizar el like'); 
             } }, error: function() { 
-    alert('Error archivo no encontrado'); } }); }
+    alert('Error archivo no encontrado'); 
+} 
+}); 
+}
